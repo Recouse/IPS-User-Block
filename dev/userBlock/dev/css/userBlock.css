@@ -1,0 +1,89 @@
+/**
+ * User Block widget styles
+ * By Fm Web (Recouse)
+ * http://fm-web.studio
+ */
+
+.userBlock {  
+	width: 100%;
+	border: 1px solid #eee;
+	border-radius: 3px;
+  overflow: hidden;
+}
+.userBlock_coverPhoto {
+  width: 100%;
+  height: 100px;
+	border-radius: 3px 3px 0 0;
+  position: relative;
+}
+	.userBlock_coverPhoto img {
+		border-radius: 3px 3px 0 0;
+	}
+.userBlock_avatar {
+	width: 75px;
+	height: 75px;
+  position: relative;
+	top: 0;
+	margin: 20px auto 40px;
+	z-index: 1;
+}
+.userBlock_avatar.withCover {
+	top: -40px;
+  margin: 0 auto;
+}
+	.userBlock_avatar img {
+		border-radius: 50%;
+		position: relative;
+		top: -10px;
+		margin: 0 auto;
+		border: 2px solid #fff;
+		box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.4);
+	}
+.userBlock_info {
+  background: #fff;
+  padding: 50px 0px 0px 0px;
+  position:relative;
+  margin-top: -90px;
+	text-align: center;
+}
+.userBlock_name {
+  width: 205px;
+  padding: 0 10px;
+  margin: 0 auto;
+  font-size: 18px; 
+  color: #3a3a3a;
+}
+	.userBlock_name p {
+		font-size: 15px; 
+		margin: 5px 0;
+		color: #959595;
+		font-weight: 300;
+	}
+.userBlock_counters {
+  overflow: hidden;
+  margin: 20px 0 0;
+  display: table; 
+  width: 100%; 
+}
+	.userBlock_counters a {
+		width: 40%;
+		padding: 20px 0;
+		border-top: 1px solid #eee;
+		text-align: center; 
+		display: table-cell;
+		color: #959595;
+		font-size: 14px;
+		transition: all .3s ease-in-out;
+	}
+		.userBlock_counters a:hover {
+			background: #eee;
+			color: #333;
+		}
+	.userBlock_counters a:first-child {
+		border-right: 1px solid #eee;
+	}
+
+/* Other desired styles */
+.cSidebarBlock_managing {
+	z-index: 2;
+}

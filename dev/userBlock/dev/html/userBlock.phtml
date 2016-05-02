@@ -1,0 +1,47 @@
+<ips:template parameters="$configuration" />
+{{if \IPS\Member::loggedIn()->inGroup( $configuration['userBlock_groups'], TRUE ) || $configuration['userBlock_groups'] == "all"}}
+	{{$member = \IPS\Member::loggedIn();}}
+	{{$coverPhoto = \IPS\Member::loggedIn()->coverPhoto();}}
+	<div class="userBlock">        	
+		{{if $coverPhoto->file}}
+			<div class="userBlock_coverPhoto overlay">
+				<img src='{$coverPhoto->file->url}' class='ipsCoverPhoto_photo' alt=''>
+			</div>
+		{{endif}}
+		<div class="userBlock_avatar{{if $coverPhoto->file}} withCover{{endif}}">  
+			{template="userPhoto" group="global" app="core" params="$member, 'medium'"} 
+		</div>
+		<div class="userBlock_info">   
+			<div class="userBlock_name">
+				<a href='{$member->url()}' title='{lang="view_my_profile"}'>{{if isset( $_SESSION['logged_in_as_key'] )}}{lang="front_logged_in_as" sprintf="$_SESSION['logged_in_from']['name']"} {{endif}}{member="name"}</a>
+
+				{{if $member->member_title && $member->member_id}}
+					<p>{$member->member_title}</p>
+				{{elseif $member->rank['title'] && $member->member_id}}
+					<p>{$member->rank['title']}</p>
+				{{endif}}
+			</div>
+
+			<div class="userBlock_counters">
+                {{if \IPS\Member::loggedIn()->member_id }}
+                    {{$posts = number_format($member->member_posts);}}
+                    {{$reputation = number_format($member->pp_reputation_points);}}
+                
+                    <a href="{url="app=core&module=members&controller=profile&do=content&id={$member->member_id}" base="front" seoTemplate="profile_content" seoTitle="$member->members_seo_name"}" title="{lang="members_content" sprintf="$member->name"}" data-ipsTooltip>
+                        {lang="userBlock_postCount"} {$posts}
+                    </a>
+                    <a href="{url="app=core&module=members&controller=profile&id={$member->member_id}&do=reputation" seoTemplate="profile_reputation" seoTitle="$member->members_seo_name"}" title="{lang="members_reputation" sprintf="$member->name"}" data-ipsTooltip>
+                        {lang="userBlock_reputaionPoints"} {$reputation}
+                    </a>
+                {{else}}
+                    <a href="{url="app=core&module=system&controller=login" seoTemplate="login" protocol="\IPS\Settings::i()->logins_over_https"}">
+                        {lang="login"}
+                    </a>
+                    <a href="{url="app=core&module=system&controller=register" seoTemplate="register"}">
+                        {lang="sign_up"}
+                    </a>
+                {{endif}}
+			</div>
+		</div>
+	</div>
+{{endif}}

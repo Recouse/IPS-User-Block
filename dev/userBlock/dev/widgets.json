@@ -1,0 +1,13 @@
+{
+    "userBlock": {
+        "class": "\\IPS\\Widget",
+        "restrict": [
+            "sidebar",
+            "cms"
+        ],
+        "default_area": "sidebar",
+        "allow_reuse": false,
+        "menu_style": "menu",
+        "embeddable": false
+    }
+}
